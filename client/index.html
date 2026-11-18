@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Web Push Lab</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <main class="container">
+    <header>
+      <h1>Web Push Lab</h1>
+      <p class="subtitle">Compare <code>web-push</code>, <code>firebase-admin</code>, and <code>@onesignal/node-onesignal</code></p>
+      <div id="browser-caps" class="status-bar"></div>
+      <div id="provider-status" class="status-bar"></div>
+    </header>
+
+    <section class="card">
+      <h2>1. Provider &amp; Browser Registration</h2>
+      <div class="row">
+        <label for="provider-select">Provider:</label>
+        <select id="provider-select">
+          <option value="webpush">web-push (VAPID)</option>
+          <option value="fcm">firebase-admin (FCM)</option>
+          <option value="onesignal">@onesignal/node-onesignal</option>
+        </select>
+
+        <input id="sub-label" type="text" placeholder="Optional label (e.g. Chrome)" />
+        <button id="register-btn" type="button">Register Browser</button>
+      </div>
+
+      <h3>Registered Subscriptions</h3>
+      <div id="subscriptions-list" class="list-box">Loading...</div>
+    </section>
+
+    <section class="card">
+      <h2>2. Send Test Notification</h2>
+      <form id="send-form" class="stack">
+        <div class="row">
+          <input id="notif-title" type="text" placeholder="Notification title" value="Web Push Lab Test" required />
+          <input id="notif-url" type="url" placeholder="Optional URL (e.g. http://localhost:3000/)" />
+        </div>
+        <textarea id="notif-body" rows="2" placeholder="Notification body" required>Testing push delivery and diagnostics.</textarea>
+        <div class="row">
+          <button id="send-btn" type="submit">Send Notification</button>
+          <span id="selected-sub-info" class="muted">No subscription selected</span>
+        </div>
+      </form>
+    </section>
+
+    <section class="card">
+      <h2>3. API Response &amp; Browser Events</h2>
+      <div class="grid-2">
+        <div>
+          <h3>Last API Response</h3>
+          <pre id="api-response" class="log-box">No request sent yet.</pre>
+        </div>
+        <div>
+          <h3>Browser Receipt &amp; Error Log</h3>
+          <pre id="browser-log" class="log-box">Waiting for events...</pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="row-between">
+        <h2>4. Recent Attempts (Diagnostics)</h2>
+        <button id="refresh-attempts-btn" type="button" class="secondary">Refresh</button>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Time</th>
+              <th>Provider</th>
+              <th>Accepted</th>
+              <th>HTTP</th>
+              <th>Duration</th>
+              <th>Browser Status</th>
+              <th>Error</th>
+            </tr>
+          </thead>
+          <tbody id="attempts-body"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="/app.js"></script>
+</body>
+</html>

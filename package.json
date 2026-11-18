@@ -1,0 +1,29 @@
+{
+  "name": "web-push-lab",
+  "version": "1.0.0",
+  "description": "Experimental Node.js lab for comparing web-push, firebase-admin, and @onesignal/node-onesignal browser push notifications.",
+  "type": "module",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js"
+  },
+  "dependencies": {
+    "@onesignal/node-onesignal": "^2.0.1-beta2",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "firebase-admin": "^13.0.2",
+    "web-push": "^3.6.7"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/obinnafranklinduru/web-push-lab.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/obinnafranklinduru/web-push-lab/issues"
+  },
+  "homepage": "https://github.com/obinnafranklinduru/web-push-lab#readme"
+}
